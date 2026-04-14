@@ -96,7 +96,12 @@ function SiteHeader() {
           <button
             type="button"
             onClick={() => setIsMenuOpen((value) => !value)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/70 text-[var(--color-primary)] ring-1 ring-white/70 backdrop-blur md:hidden"
+            className={clsx(
+              "inline-flex h-11 w-11 items-center justify-center rounded-md ring-1 backdrop-blur transition-all duration-300 active:scale-[0.97] md:hidden",
+              isMenuOpen
+                ? "bg-[var(--color-primary)] text-white ring-[rgba(0,17,58,0.16)] shadow-[0_12px_30px_rgba(0,17,58,0.12)]"
+                : "bg-white/72 text-[var(--color-primary)] ring-white/70 hover:bg-white hover:shadow-[0_12px_30px_rgba(0,17,58,0.1)]",
+            )}
             aria-label="Toggle navigation"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -118,16 +123,19 @@ function SiteHeader() {
                 to={item.path}
                 end={item.path === "/"}
                 onClick={() => setIsMenuOpen(false)}
+                style={{ WebkitTapHighlightColor: "transparent" }}
                 className={({ isActive }) =>
                   clsx(
-                    "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
+                    "group block rounded-xl px-4 py-3 text-sm font-medium backdrop-blur-sm transition-all duration-300 active:scale-[0.99]",
                     isActive
-                      ? "bg-[var(--color-primary)] text-white"
-                      : "bg-white/60 text-[var(--color-primary)]",
+                      ? "bg-[var(--color-primary)] text-white shadow-[0_16px_30px_rgba(0,17,58,0.16)] [&>span]:!text-white"
+                      : "bg-white/62 text-[var(--color-primary)] ring-1 ring-white/70 [&>span]:text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white hover:[&>span]:!text-white focus-visible:bg-[var(--color-primary)] focus-visible:text-white focus-visible:[&>span]:!text-white active:bg-[var(--color-primary)] active:text-white active:[&>span]:!text-white hover:shadow-[0_14px_28px_rgba(0,17,58,0.14)]",
                   )
                 }
               >
-                {item.label}
+                <span className="transition-colors duration-300">
+                  {item.label}
+                </span>
               </NavLink>
             ))}
           </nav>

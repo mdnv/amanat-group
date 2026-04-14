@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Reveal from "../../components/Reveal";
-
-const portraitImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD1K3mO6pfg_5JxbW4FefOcx1-6smd7V20s-4VF7Pljx_tO7A46YWcxNbBob55HqlgDXRY8zDinUcivS5C7f3EVfc-Fk5MB8zLLVxR7Tu1RWiZbmHZ-Z4stnBfljhzpIOpFxpPeTM_1LmVsMUCHexCRIqv0IgjrgXRV2Qh2i7S5kuj0QIAKgfwW77zcPHvkZMpzQVsC5IL_T7vzt4TyUNVQtc4rKsU5C-lhxpOfyg0rFKwbAtbz9StNvK-DeThnXdknr0YdXPhG1kY";
+import portraitImage from "../../images/portrait.png";
 
 const copy = {
   ru: {
