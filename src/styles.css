@@ -1,0 +1,198 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/manrope/800.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Manrope", sans-serif;
+}
+
+:root {
+  --color-primary: #00113a;
+  --color-primary-container: #002366;
+  --color-secondary: #735c00;
+  --color-secondary-fixed-dim: #e9c349;
+  --color-surface: #f9f9f9;
+  --color-surface-low: #f3f3f3;
+  --color-surface-lowest: #ffffff;
+  --color-surface-high: #e8e8e8;
+  --color-ink: #1a1c1c;
+  --color-muted: #5b6274;
+  --color-outline: #757682;
+  --color-outline-variant: #c5c6d2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(233, 195, 73, 0.08), transparent 20%),
+    var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grain {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: radial-gradient(circle at center, black, transparent 75%);
+}
+
+.hero-glow {
+  animation: floatGlow 7s ease-in-out infinite;
+}
+
+.header-glass-wave {
+  animation: glassWave 0.8s ease forwards;
+  filter: blur(22px);
+}
+
+.route-fade-in {
+  animation: routeFade 0.45s ease;
+}
+
+.cityline,
+.skyline-shape {
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(255, 255, 255, 0.5) 8% 9%, transparent 9% 12%, rgba(255, 255, 255, 0.32) 12% 13.5%, transparent 13.5% 20%, rgba(255, 255, 255, 0.55) 20% 21%, transparent 21% 27%, rgba(255, 255, 255, 0.35) 27% 28%, transparent 28% 33%, rgba(255, 255, 255, 0.44) 33% 34%, transparent 34% 44%, rgba(255, 255, 255, 0.28) 44% 45%, transparent 45% 56%, rgba(255, 255, 255, 0.6) 56% 57%, transparent 57% 70%, rgba(255, 255, 255, 0.38) 70% 71%, transparent 71% 82%, rgba(255, 255, 255, 0.48) 82% 83%, transparent 83% 100%);
+  clip-path: polygon(0% 100%, 0% 78%, 8% 78%, 8% 61%, 12% 61%, 12% 70%, 16% 70%, 16% 55%, 20% 55%, 20% 14%, 25% 14%, 25% 64%, 31% 64%, 31% 44%, 36% 44%, 36% 58%, 42% 58%, 42% 38%, 46% 38%, 46% 75%, 55% 75%, 55% 47%, 60% 47%, 60% 33%, 66% 33%, 66% 69%, 74% 69%, 74% 52%, 79% 52%, 79% 40%, 86% 40%, 86% 80%, 100% 80%, 100% 100%);
+  opacity: 0.9;
+}
+
+.cityline::after,
+.skyline-shape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16) 90%, rgba(255, 255, 255, 0.7));
+  filter: blur(10px);
+}
+
+.mountain-shape {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.04) 50%, rgba(4, 16, 43, 0.15) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.38), transparent 45%);
+  clip-path: polygon(0% 100%, 0% 82%, 10% 70%, 20% 78%, 30% 58%, 39% 63%, 54% 34%, 63% 54%, 75% 32%, 84% 56%, 100% 41%, 100% 100%);
+}
+
+.window-shape {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 2px, transparent 2px 58px),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0 2px, transparent 2px 58px);
+  mix-blend-mode: screen;
+  opacity: 0.52;
+}
+
+.blueprint-shape {
+  background:
+    linear-gradient(180deg, transparent 0, rgba(255, 255, 255, 0.1) 100%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 36px),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 36px);
+  opacity: 0.55;
+}
+
+.portrait-illustration {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 22%, #f4c7ab 0 11%, transparent 11.5%),
+    radial-gradient(circle at 50% 16%, #1b2036 0 16%, transparent 16.3%),
+    radial-gradient(circle at 50% 48%, #1d304f 0 30%, transparent 30.3%),
+    radial-gradient(circle at 50% 80%, #10192f 0 26%, transparent 26.3%),
+    linear-gradient(180deg, #111932 0%, #15274d 40%, #0a1020 100%);
+}
+
+.portrait-illustration::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 35% 26%, rgba(255, 255, 255, 0.22), transparent 12%),
+    radial-gradient(circle at 63% 26%, rgba(255, 255, 255, 0.18), transparent 10%),
+    radial-gradient(circle at 50% 58%, rgba(255, 255, 255, 0.08), transparent 22%);
+}
+
+.field {
+  display: grid;
+  gap: 10px;
+}
+
+.field span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  appearance: none;
+  border: 0;
+  border-bottom: 1px solid rgba(197, 198, 210, 0.4);
+  background: linear-gradient(180deg, rgba(249, 249, 249, 0.85), rgba(255, 255, 255, 0.95));
+  padding: 1.1rem 1rem;
+  font-size: 1rem;
+  color: var(--color-primary);
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  border-bottom-color: var(--color-secondary);
+  box-shadow: 0 18px 35px rgba(233, 195, 73, 0.08);
+  transform: translateY(-1px);
+}
+
+@keyframes floatGlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.04);
+  }
+}
+
+@keyframes glassWave {
+  0% {
+    transform: translateX(-10%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+@keyframes routeFade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
