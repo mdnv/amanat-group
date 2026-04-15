@@ -1,14 +1,75 @@
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import Reveal from "../components/Reveal";
+import gsap from "gsap";
 
 const heroImage =
   "https://images.unsplash.com/photo-1768069794857-b4690ab163a3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=2600";
 
+let hasPlayedAnimation = false;
+
 function HeroSection() {
   const { t } = useTranslation();
   const titleParts = t("hero.title").split(". ");
+
+  const videoRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const [showVideo] = useState(!hasPlayedAnimation);
+
+  useEffect(() => {
+    // If it already played globally in this session, ensure text is visible
+    if (hasPlayedAnimation) {
+      if (textContainerRef.current) {
+        gsap.set(textContainerRef.current.children, { opacity: 1, y: 0 });
+      }
+      return;
+    }
+
+    // Hide text children initially
+    if (textContainerRef.current) {
+      gsap.set(textContainerRef.current.children, { opacity: 0, y: 20 });
+    }
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          video.play().catch((err) => console.log("Auto-play prevented", err));
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(video);
+
+    const handleVideoEnd = () => {
+      hasPlayedAnimation = true;
+      
+      // Animate text in
+      if (textContainerRef.current) {
+        gsap.to(textContainerRef.current.children, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+        });
+      }
+    };
+
+    video.addEventListener("ended", handleVideoEnd);
+
+    return () => {
+      observer.disconnect();
+      if (video) {
+        video.removeEventListener("ended", handleVideoEnd);
+      }
+    };
+  }, []);
 
   return (
     <section className="relative flex min-h-[720px] items-center overflow-hidden sm:min-h-[820px] lg:min-h-[921px]">
@@ -20,13 +81,22 @@ function HeroSection() {
           loading="eager"
           fetchPriority="high"
         />
+        {showVideo && (
+          <video
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-[0.72] brightness-[0.72] contrast-[0.92]"
+            src="/videos/video-hero-section.mp4"
+            muted
+            playsInline
+          />
+        )}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,17,58,0.34),rgba(0,17,58,0.48))] sm:bg-[linear-gradient(180deg,rgba(0,17,58,0.22),rgba(0,17,58,0.32))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,17,58,0.98),rgba(0,17,58,0.92)_48%,rgba(0,17,58,0.36)_100%)] sm:bg-gradient-to-r sm:from-[rgba(0,17,58,0.96)] sm:via-[rgba(0,17,58,0.84)] sm:to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%)] sm:bg-none" />
       </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <Reveal className="py-24 text-white sm:py-28 lg:py-32">
+        <div ref={textContainerRef} className="py-24 text-white sm:py-28 lg:py-32">
           <span className="mb-5 inline-block rounded-sm bg-[var(--color-secondary-fixed-dim)] px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[#241a00] sm:mb-6 sm:text-[0.75rem] sm:tracking-[0.16em]">
             {t("hero.eyebrow")}
           </span>
@@ -51,7 +121,7 @@ function HeroSection() {
               </Button>
             </Link>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
