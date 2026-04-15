@@ -21,6 +21,35 @@ const resources = {
         submit: "Submit Request",
       },
       hero: {
+        slides: [
+          {
+            eyebrow: "Halal Certified",
+            title: "Invest with Islamic principles. Build without riba.",
+            description: "Amanat Group builds an editorial-grade investment experience across Dubai, Bishkek and Moscow with transparent, asset-backed opportunities.",
+            ctaPrimary: "Explore Portfolios",
+            ctaSecondary: "Our Mission",
+            linkPrimary: "/investments",
+            linkSecondary: "/amanat-group"
+          },
+          {
+            eyebrow: "Real Estate",
+            title: "Find your dream home. Without interest.",
+            description: "Discover premium properties in Dubai and the CIS, structured for ethical ownership and long-term value.",
+            ctaPrimary: "View Properties",
+            ctaSecondary: "Consultation",
+            linkPrimary: "/real-estate",
+            linkSecondary: "/contact"
+          },
+          {
+            eyebrow: "Partnership",
+            title: "Sell your property. Fast and fair.",
+            description: "We are actively acquiring prime real estate. Get a professional valuation and a transparent offer from Amanat Group.",
+            ctaPrimary: "Sell Property",
+            ctaSecondary: "Contact Us",
+            linkPrimary: "/contact",
+            linkSecondary: "/contact"
+          }
+        ],
         eyebrow: "Halal Certified",
         title: "Invest with Islamic principles. Build without riba.",
         description:
@@ -217,6 +246,35 @@ const resources = {
         submit: "Отправить запрос",
       },
       hero: {
+        slides: [
+          {
+            eyebrow: "Halal Certified",
+            title: "Инвестиции по нормам Ислама. Бизнес без Риба.",
+            description: "Amanat Group создаёт инвестиционный опыт премиального уровня в Дубае, Бишкеке и Москве с прозрачными, обеспеченными активами возможностями.",
+            ctaPrimary: "Смотреть портфели",
+            ctaSecondary: "Наша миссия",
+            linkPrimary: "/investments",
+            linkSecondary: "/amanat-group"
+          },
+          {
+            eyebrow: "Недвижимость",
+            title: "Найдите дом своей мечты. Без процентов.",
+            description: "Откройте для себя элитную недвижимость в Дубае и СНГ, созданную для этичного владения и долгосрочной ценности.",
+            ctaPrimary: "Смотреть объекты",
+            ctaSecondary: "Консультация",
+            linkPrimary: "/real-estate",
+            linkSecondary: "/contact"
+          },
+          {
+            eyebrow: "Партнерство",
+            title: "Продайте свою недвижимость. Быстро и честно.",
+            description: "Мы активно приобретаем качественную недвижимость. Получите профессиональную оценку и прозрачное предложение от Amanat Group.",
+            ctaPrimary: "Продать объект",
+            ctaSecondary: "Связаться с нами",
+            linkPrimary: "/contact",
+            linkSecondary: "/contact"
+          }
+        ],
         eyebrow: "Halal Certified",
         title: "Инвестиции по нормам Ислама. Бизнес без Риба.",
         description:
