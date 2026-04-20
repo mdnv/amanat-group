@@ -1,93 +1,71 @@
-import { ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import useMockSubmit from "../hooks/useMockSubmit";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SiteFooter() {
-  const { t, i18n } = useTranslation();
-  const regions = t("contact.regions", { returnObjects: true });
-  const footerLinks = t("footer.links", { returnObjects: true });
-  const currentYear = new Date().getFullYear();
-  const { status, submit } = useMockSubmit();
-  const regionLinks = ["/investments", "/real-estate", "/contact"];
-  const companyLinks = ["/amanat-group", "/amanat-group", "/contact"];
-  const isRu = i18n.language === "ru";
-
   return (
-    <footer className="bg-[var(--color-primary)] px-4 py-14 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div>
-            <p className="font-display text-3xl text-[var(--color-secondary)]">AMANAT</p>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-white/70">{t("footer.description")}</p>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/50">{t("footer.regions")}</p>
-            <ul className="mt-5 space-y-3 text-white/78">
-              {regions.map((region, index) => (
-                <li key={region}>
-                  <Link to={regionLinks[index] ?? "/"} className="transition-colors hover:text-white">
-                    {region}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/50">{t("footer.company")}</p>
-            <ul className="mt-5 space-y-3 text-white/78">
-              {footerLinks.map((link, index) => (
-                <li key={link}>
-                  <Link to={companyLinks[index] ?? "/"} className="transition-colors hover:text-white">
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/50">{t("contact.subscribe")}</p>
-            <form onSubmit={submit} className="mt-5">
-              <div className="flex overflow-hidden rounded-md bg-white/8">
-                <input
-                  type="email"
-                  required
-                  placeholder="Email"
-                  className="w-full bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/40 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="bg-[var(--color-secondary)] px-5 text-[var(--color-primary)]"
-                  aria-label="Subscribe"
-                >
-                  <ArrowRight size={18} />
-                </button>
-              </div>
-              <p className="mt-3 text-xs text-white/60">
-                {status === "loading"
-                  ? isRu
-                    ? "Отправка..."
-                    : "Sending..."
-                  : status === "success"
-                    ? isRu
-                      ? "Подписка оформлена."
-                      : "Subscribed successfully."
-                    : isRu
-                      ? "Получайте новые обзоры портфеля и обновления."
-                      : "Get new portfolio notes and updates."}
-              </p>
-            </form>
+    <footer className="bg-[#f3f3f3] dark:bg-[#1a1c1c] w-full mt-20 tonal-layering bg-surface-container-low border-t border-black/5 dark:border-white/5">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full max-w-7xl mx-auto">
+        <div className="space-y-6">
+          <Link className="text-xl font-bold text-white dark:text-teal-50 uppercase tracking-tighter" to="/" style={{color: 'white'}}>Amanat Group</Link>
+          <p className="text-[#707975] dark:text-gray-400 font-['Manrope'] font-normal text-base leading-relaxed">
+            Building the foundations of modern Kyrgyzstan through elite real estate stewardship and industrial foresight.
+          </p>
+          <div className="flex gap-4">
+            <Link className="w-10 h-10 bg-[#00342b] rounded-full flex items-center justify-center text-white hover:bg-[#745b00] transition-colors" to="/">
+              <span className="material-symbols-outlined text-sm">public</span>
+            </Link>
+            <Link className="w-10 h-10 bg-[#00342b] rounded-full flex items-center justify-center text-white hover:bg-[#745b00] transition-colors" to="/">
+              <span className="material-symbols-outlined text-sm">share</span>
+            </Link>
+            <Link className="w-10 h-10 bg-[#00342b] rounded-full flex items-center justify-center text-white hover:bg-[#745b00] transition-colors" to="/">
+              <span className="material-symbols-outlined text-sm">mail</span>
+            </Link>
           </div>
         </div>
-
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/52 md:flex-row md:items-center md:justify-between">
-          <p>{t("footer.copy").replace("2024", String(currentYear))}</p>
-          <p className="uppercase tracking-[0.24em] text-[var(--color-secondary-fixed-dim)]">
-            {isRu ? "Halal certified" : "Halal certified"}
-          </p>
+        
+        <div>
+          <h4 className="text-[#00342b] dark:text-teal-500 font-bold uppercase text-xs tracking-widest mb-8">Navigation</h4>
+          <ul className="space-y-4 font-['Manrope'] font-normal text-base" style={{color: "white"}}>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/">Overview</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/buy-rent">Buy & Rent</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/investments">Services</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/amanat-group">About Us</Link></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 className="text-[#00342b] dark:text-teal-500 font-bold uppercase text-xs tracking-widest mb-8">Corporate</h4>
+          <ul className="space-y-4 font-['Manrope'] font-normal text-base" style={{color: "white"}}>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/contact">Privacy Policy</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/contact">Terms of Service</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/contact">Investment Relations</Link></li>
+            <li><Link className="text-[#707975] dark:text-gray-400 hover:text-[#00342b] dark:hover:text-teal-300 underline transition-all" to="/contact">Careers</Link></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 className="text-[#00342b] dark:text-teal-500 font-bold uppercase text-xs tracking-widest mb-8">Contact Us</h4>
+          <ul className="space-y-4 font-['Manrope'] font-normal text-base text-[#707975] dark:text-gray-400">
+            <li className="flex gap-2">
+              <span className="material-symbols-outlined text-[#745b00] text-sm">location_on</span>
+              123 Chuy Avenue, Bishkek
+            </li>
+            <li className="flex gap-2">
+              <span className="material-symbols-outlined text-[#745b00] text-sm">call</span>
+              +996 312 000 000
+            </li>
+            <li className="flex gap-2">
+              <span className="material-symbols-outlined text-[#745b00] text-sm">mail</span>
+              contact@amanatgroup.kg
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div className="border-t border-black/5 dark:border-white/5 py-8 px-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#707975] dark:text-gray-400">
+          <p>© 2024 Amanat Group. Pillars of National Prosperity.</p>
+          <p>Designed with excellence in Bishkek.</p>
         </div>
       </div>
     </footer>

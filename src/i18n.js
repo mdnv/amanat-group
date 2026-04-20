@@ -5,7 +5,6 @@ const resources = {
   en: {
     translation: {
       nav: [
-        { label: "Home", path: "/" },
         { label: "Investments", path: "/investments" },
         { label: "Real Estate", path: "/real-estate" },
         { label: "Amanat Group", path: "/amanat-group" },

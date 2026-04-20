@@ -12,8 +12,8 @@
 }
 
 :root {
-  --color-primary: #00113a;
-  --color-primary-container: #002366;
+  --color-primary: #00342b;
+  --color-primary-container: #004d40;
   --color-secondary: #735c00;
   --color-secondary-fixed-dim: #e9c349;
   --color-surface: #f9f9f9;
@@ -195,4 +195,75 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* Imported from Stitch Design */
+@theme {
+  --color-tertiary: #4e2013;
+  --color-primary-fixed: #afefdd;
+  --color-surface-container-high: #e8e8e8;
+  --color-error-container: #ffdad6;
+  --color-on-primary: #ffffff;
+  --color-error: #ba1a1a;
+  --color-primary-container: #004d40;
+  --color-on-secondary-fixed-variant: #574500;
+  --color-surface: #f9f9f9;
+  --color-on-secondary-container: #725a00;
+  --color-surface-variant: #e2e2e2;
+  --color-primary: #00342b;
+  --color-surface-dim: #dadada;
+  --color-inverse-surface: #2f3131;
+  --color-background: #f9f9f9;
+  --color-tertiary-fixed: #ffdbd1;
+  --color-on-error-container: #93000a;
+  --color-outline: #707975;
+  --color-on-primary-fixed-variant: #065043;
+  --color-on-primary-container: #7ebdac;
+  --color-surface-bright: #f9f9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-secondary-fixed: #ffe089;
+  --color-outline-variant: #bfc9c4;
+  --color-tertiary-container: #693527;
+  --color-surface-container-highest: #e2e2e2;
+  --color-primary-fixed-dim: #94d3c1;
+  --color-inverse-on-surface: #f0f1f1;
+  --color-inverse-primary: #94d3c1;
+  --color-surface-container-low: #f3f3f3;
+  --color-secondary: #745b00;
+  --color-surface-container: #eeeeee;
+  --color-surface-tint: #29695b;
+  --color-secondary-fixed-dim: #eac243;
+  --color-on-tertiary-container: #e89f8c;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-fixed-dim: #ffb5a1;
+  --color-on-tertiary-fixed: #370e04;
+  --color-secondary-container: #fcd353;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-error: #ffffff;
+  --color-on-surface-variant: #3f4945;
+  --color-on-secondary: #ffffff;
+  --color-on-background: #1a1c1c;
+  --color-on-tertiary-fixed-variant: #6d382a;
+  --color-on-primary-fixed: #00201a;
+  --color-on-surface: #1a1c1c;
+}
+
+@theme {
+  --font-body: 'Manrope', sans-serif;
+  --font-headline: 'Manrope', sans-serif;
+  --font-label: 'Manrope', sans-serif;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.ticker-scroll {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite;
+}
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
